@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int N;
+            Console.WriteLine("Input a three-digit number: ");
+            N = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(N%10);
+            Console.ReadLine();
+        }
+    }
+}
