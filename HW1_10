@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int N; int a; int b;
+            Console.WriteLine("Input a three-digit number: ");
+            N = Convert.ToInt32(Console.ReadLine());
+            a = N/100;
+            b = N%10;
+            N = a*10+b;
+            Console.WriteLine("New two-digit number is " + N);
+            Console.ReadLine();
+        }
+    }
+}
