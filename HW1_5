@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double a;
+            Console.WriteLine("5: Input number");
+            a = Convert.ToDouble(Console.ReadLine());
+            if (a%2 == 0)
+                Console.WriteLine("{0} is even", a);
+            else
+                Console.WriteLine("{0} is odd", a);
+        }
+    }
+}
