@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double a;
+            double d;
+            double b;
+            double c;
+            Console.WriteLine("4: Input first number");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("4: Input second number");
+            b = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("4: Input third number");
+            c = Convert.ToDouble(Console.ReadLine());
+            d=a;
+            if (b > d)
+                d=b;
+            if (c > d)
+                d=c;
+            Console.WriteLine("Biggest number is {0}", d);
+        }
+    }
+}
