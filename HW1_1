@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double a;
+            Console.Write("1: Input number: ");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("{0} in power of 2 equals {1}", a, Math.Pow(a, 2));
+        }
+    }
+}
