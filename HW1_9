@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int N;
+            int a;
+            int b;
+            Console.WriteLine("Input number in [10,99]: ");
+            N = Convert.ToInt32(Console.ReadLine());
+            a = N/10;
+            b = N%10;
+            if (a>b)
+                Console.WriteLine("Biggest digit is " + a);
+            else
+                Console.WriteLine("Biggest digit is " + b);
+            Console.ReadLine();
+        }
+    }
+}
