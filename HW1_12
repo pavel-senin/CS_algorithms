@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int N; int a; int b;
+            Console.WriteLine("Input digit number: ");
+            N = Convert.ToInt32(Console.ReadLine());
+            if (N/100>0 && N/100<10)
+                Console.WriteLine("The number {0} is a three-digit number with last digit {1} ", N, N%10);
+            else
+                Console.WriteLine("{0} is not a three-digit number", N);
+            Console.ReadLine();
+        }
+    }
+}
