@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double a;
+            double b;
+            Console.Write("2: Input first number: ");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.Write("2: Input second number: ");
+            b = Convert.ToDouble(Console.ReadLine());
+            if (b == Math.Pow(a, 2))
+                Console.WriteLine("number b is number a in square");
+            else
+                Console.WriteLine("number b is not number a in square");
+        }
+    }
+}
