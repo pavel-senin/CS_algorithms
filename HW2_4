@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double q;
+            double x1;
+            double y1;
+            double z1;
+            double x2;
+            double y2;
+            double z2;
+            double res;
+            Console.Write("Define: 2D or 3D (Input 2 or 3)");
+            q = Convert.ToDouble(Console.ReadLine());
+            switch (q)
+            {
+                case 2:
+                Console.WriteLine("Input x for first point");
+                x1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input y for first point");
+                y1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input x for second point");
+                x2 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input y for second point");
+                y2 = Convert.ToDouble(Console.ReadLine());
+                q = Math.Pow((Math.Pow((x1-x2),2)+Math.Pow((y1-y2),2)), 0.5);
+                Console.WriteLine("The distance between points ({0},{1}) and ({2},{3}) is " + q, x1,y1,x2,y2);
+                break;
+                case 3:
+                Console.WriteLine("Input x for first point");
+                x1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input y for first point");
+                y1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input z for first point");
+                z1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input x for second point");
+                x2 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input y for second point");
+                y2 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Input z for second point");
+                z2 = Convert.ToDouble(Console.ReadLine());
+                q = Math.Pow((Math.Pow((x1-x2),2)+Math.Pow((y1-y2),2)+Math.Pow((z1-z2),2)), 0.5);
+                Console.WriteLine("The distance between points ({0},{1},{2}) and ({3},{4},{5}) is " + q, x1,y1,z1,x2,y2,z2);
+                break;
+                default:
+                Console.WriteLine("Can not define");
+                break;
+            }
+        }
+    }
+}
