@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double a;
+            Console.Write("3: Input number of the weekday: ");
+            a = Convert.ToDouble(Console.ReadLine());
+            switch (a)
+            {
+                case 1:
+                    Console.WriteLine("Monday, it is not a day off");
+                    break;
+                case 2:
+                    Console.WriteLine("Tuesday, it is not a day off");
+                    break;
+                case 3:
+                    Console.WriteLine("Wednesday, it is not a day off");
+                    break;
+                case 4:
+                    Console.WriteLine("Thursday, it is not a day off");
+                    break;
+                case 5:
+                    Console.WriteLine("Friday, it is not a day off");
+                    break;
+                case 6:
+                    Console.WriteLine("Saturday, it is a day off");
+                    break;
+                case 7:
+                    Console.WriteLine("Sunday, it is a day off");
+                    break;
+                default:
+                    Console.WriteLine("The weekday can not be defined");
+                    break;
+            }
+        }
+    }
+}
