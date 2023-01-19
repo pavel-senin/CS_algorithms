@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            double q;
+            Console.Write("2: Input first number: ");
+            q = Convert.ToDouble(Console.ReadLine());
+            switch (q)
+            {
+                case 1:
+                    Console.WriteLine("X>0 and Y>0");
+                    break;
+                case 2:
+                    Console.WriteLine("X<0 and Y>0");
+                    break;
+                case 3:
+                    Console.WriteLine("X<0 and Y<0");
+                    break;
+                case 4:
+                    Console.WriteLine("X>0 and Y<0");
+                    break;
+                default:
+                    Console.WriteLine("Can not define");
+                    break;
+            }
+        }
+    }
+}
