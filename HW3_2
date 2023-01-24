@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int N;
+            int res=0;
+            Console.Write("Input number N: ");
+            N = Convert.ToInt32(Console.ReadLine());
+            for (;(N/10)!=0;)
+            {
+                res = res+N%10;
+                N=N/10;
+            }
+            res = res+N;
+            Console.WriteLine("The sum of digits equals {0}", res);
+        }
+    }
+}
