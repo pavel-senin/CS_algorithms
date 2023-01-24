@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int N;
+            Console.Write("Input number N: ");
+            N = Convert.ToInt32(Console.ReadLine());
+            for (int i=1; i<=N; i++)
+                Console.WriteLine("{0} in power of 3 equals {1}", i, Math.Pow(i, 3));
+        }
+    }
+}
