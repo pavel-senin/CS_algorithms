@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            void NewArray(int[] arr)
+            {
+                for ( int i=0; i < arr.Length; i++)
+                {
+                    arr[i]=new Random().Next(-200,201);
+                }
+            }
+            int OEv(int[] arr)
+            {
+                int res = 0;
+                for ( int i=0; i < arr.Length; i++)
+                {
+                    if (i%2==1)
+                        res = res+arr[i];
+                }
+                return res;
+            }
+            
+            
+            int[] arr=new int[10];
+            NewArray(arr);
+            Console.WriteLine(string.Join(", ", arr));
+            int OddEven = 0;
+            OddEven=OEv(arr);
+            Console.WriteLine("Сумма чисел на нечетных позициях (нумерация с нуля): {0}", OddEven);
+        }
+    }
+}
