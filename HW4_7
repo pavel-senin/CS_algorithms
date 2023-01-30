@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            void NewArray(double[] arr)
+            {
+                for ( int i=0; i < arr.Length; i++)
+                {
+                    arr[i]=new Random().Next(-200,201);
+                }
+            }
+            double OEv(double[] arr)
+            {
+                double[] delta = new double[2];
+                delta[0]=arr[0]; delta[1]=arr[0];
+                for ( int i=1; i < arr.Length; i++)
+                {
+                    if (arr[i]<delta[0])
+                    {
+                        delta[0]=arr[i];
+                    }
+                    if (arr[i]>delta[1])
+                    {
+                        delta[1]=arr[i];
+                    }
+                }
+                return Math.Abs(delta[1]-delta[0]);
+            }
+            
+            
+            double[] arr=new double[9];
+            NewArray(arr);
+            Console.WriteLine(string.Join(", ", arr));
+            Console.WriteLine("Разница между максимальным и минимальным элементом равна: {0}", OEv(arr));
+        }
+    }
+}
