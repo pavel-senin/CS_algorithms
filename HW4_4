@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            void NewArray(int[] arr)
+            {
+                for ( int i=0; i < arr.Length; i++)
+                {
+                    arr[i]=new Random().Next(-200,201);
+                }
+            }
+            int OEv(int[] arr)
+            {
+                int res = 0;
+                for ( int i=0; i < arr.Length; i++)
+                {
+                    if (arr[i]>=10 && arr[i]<=99)
+                        res++;
+                }
+                return res;
+            }
+            
+            
+            int[] arr=new int[123];
+            NewArray(arr);
+            Console.WriteLine(string.Join(", ", arr));
+            int OddEven = 0;
+            OddEven=OEv(arr);
+            Console.WriteLine("Элементов в диапазоне [10;99]: {0}", OddEven);
+        }
+    }
+}
