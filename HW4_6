@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            void NewArray(int[] arr)
+            {
+                for ( int i=0; i < arr.Length; i++)
+                {
+                    arr[i]=new Random().Next(-200,201);
+                }
+            }
+            int[] OEv(int[] arr)
+            {
+                int[] OddEven=new int[arr.Length / 2+arr.Length%2];
+                for ( int i=0; i < OddEven.Length; i++)
+                {
+                    if (arr.Length%2==1 && i==arr.Length/2)
+                        OddEven[i]=arr[i];
+                    else
+                        OddEven[i]=arr[i]+arr[arr.Length-i-1];
+                }
+                return OddEven;
+            }
+            
+            
+            int[] arr=new int[9];
+            NewArray(arr);
+            Console.WriteLine(string.Join(", ", arr));
+            int[] OddEven = new int[(arr.Length/2)+1];
+            OddEven=OEv(arr);
+            Console.WriteLine(string.Join(", ", OddEven));
+        }
+    }
+}
