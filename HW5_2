@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Введите порядковый номер числа Фибоначчи (первое число - 0; второе число - 1)");
+            //0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+            int position = Convert.ToInt32(Console.ReadLine());
+            if (position>2)
+            {
+                double fib1 = 0;
+                double fib2 = 1;
+                for (int i=3; i<=position; i++)
+                {
+                    Console.WriteLine("На позиции {0} стоит число {1}",i,fib1+fib2);
+                    fib1=fib1+fib2;
+                    fib2=fib1-fib2;
+                    fib1=fib1-fib2;
+                    fib2=fib1+fib2;
+                }
+                Console.WriteLine("Вывод закончен");
+            }
+            else if (position==1)
+                Console.WriteLine("первое число - 0");
+            else if (position==2)
+                Console.WriteLine("второе число - 1");
+            else
+                Console.WriteLine("Некорректный ввод");
+        }
+    }
+}
