@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Введите вершины четырехугольника: ");
+            double[,] figure = new double[4,2];
+            for (int i=0; i<=3; i++)
+            {
+                Console.WriteLine("Введите {0} вершину",i+1);
+                figure[i,0] = Convert.ToDouble(Console.ReadLine());
+                figure[i,1] = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("{0} вершина фигуры имеет координаты: ({1},{2})",i+1,figure[i,0],figure[i,1]);
+            }
+            Console.WriteLine("Введите коэффициент масштабирования:");
+            double k=Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("1 вершина фигуры имеет координаты: ({0},{1})",figure[0,0],figure[1,1]);
+            for (int i=1; i<=3; i++)
+            {
+                figure[i,0] = k*(figure[i,0]-figure[0,0]);
+                figure[i,1] = k*(figure[i,1]-figure[0,1]);
+                Console.WriteLine("{0} вершина фигуры имеет координаты: ({1},{2})",i+1,figure[i,0],figure[i,1]);
+            }
+            Console.WriteLine("Вывод закончен");
+        }
+    }
+}
