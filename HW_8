@@ -1,0 +1,188 @@
+using System;
+using System.Collections;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        
+        public static void Main(string[] args)
+        {
+            
+
+            //Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.
+            //Задача 1
+            Console.WriteLine("Задача 1");
+            Console.WriteLine("Найти произведение двух матриц");
+            Console.WriteLine("Введите число строк первой матрицы");
+            int m = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите число столбцов (совпадает с числом строк второй матрицы)");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите число столбцов второй матрицы");
+            int l = Convert.ToInt32(Console.ReadLine());
+            double[,] arr1 = new double[m,n];
+            Console.WriteLine("Сначала заполняем случайными вещественными числами от 0 до 1000 первую матрицу mxn");
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    Random rand = new Random();
+                    arr1[i,j]=Math.Round(rand.NextDouble()*1000,2);
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr1[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            double[,] arr2 = new double[n,l];
+            Console.WriteLine("Сначала заполняем случайными вещественными числами от 0 до 1000 вторую матрицу nxl");
+            for (int i=0; i<n; i++)
+            {
+                for (int j=0; j<l; j++)
+                {
+                    Random rand = new Random();
+                    arr2[i,j]=Math.Round(rand.NextDouble()*1000,2);
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr2[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("Находим их произведение (размерность - mxl): ");
+            double[,] arr3 = new double[m,l];
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<l; j++)
+                {
+                    arr3[i,j] = 0;
+                    for (int k=0; k<n; k++)
+                    {
+                        arr3[i,j] += arr1[i,k]*arr2[k,j];
+                    }
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr3[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("Вывод по задаче 1 закончен");
+            //Задача 2
+            Console.WriteLine("Задача 2");
+            Console.WriteLine("В двумерном массиве целых чисел удалить строку и столбец, ");
+            Console.WriteLine("на пересечении которых расположен наименьший элемент.");
+            Console.WriteLine("Воспользуемся первым массивом mxn и удалим из него лишние строку и столбец");
+            double[,] arr4 = new double[m-1,n-1];
+            int minCol = 0;
+            int minRow = 0;
+            double minElem = arr1[minCol, minRow];
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    if (arr1[i,j]<minElem)
+                    {
+                        minElem=arr1[i,j];
+                        minCol = i;
+                        minRow = j;
+                    }
+                }
+            }
+            Console.WriteLine("Наименьший элемент равен {0} и находится в строке {1}, столбце {2}",minElem, minCol+1, minRow+1);
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    if (i<minCol && j<minRow)
+                        arr4[i,j] = arr1[i,j];
+                    if (i<minCol && j>minRow)
+                        arr4[i,j-1] = arr1[i,j];
+                    if (i>minCol && j<minRow)
+                        arr4[i-1,j] = arr1[i,j];
+                    if (i>minCol && j>minRow)
+                        arr4[i-1,j-1] = arr1[i,j];
+                }
+            }
+            Console.WriteLine("После удаления: ");
+            for (int i=0; i<m-1; i++)
+            {
+                for (int j=0; j<n-1; j++)
+                {
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr4[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("Вывод по задаче 2 закончен");
+            //Задача 3
+            //Сформировать трехмерный массив не повторяющимися двузначными числами
+            //показать его построчно на экран выводя индексы соответствующего элемента
+            Console.WriteLine("Задача 3");
+            Console.WriteLine("Сформировать трехмерный массив неповторяющимися двузначными числами");
+            Console.WriteLine("показать его построчно на экран выводя индексы соответствующего элемента");
+            Console.WriteLine("Введите параметры  матрицы - mxnxl (суммарно не более 90 элементов)");
+            m = Convert.ToInt32(Console.ReadLine());
+            n = Convert.ToInt32(Console.ReadLine());
+            l = Convert.ToInt32(Console.ReadLine());
+            
+            int[,,] arr5 = new int[m,n,l];
+            int[] arrtmp = new int[m*n*l];
+            Random random = new Random();
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    for (int k = 0; k < l; k++)
+                    {
+                        int num = random.Next(10, 99);
+                        if (arrtmp.Contains(num))
+                        {
+                            k--;
+                        }
+                        else
+                        {
+                            arrtmp[m*m*i+n*j+k] = num;
+                            arr5[i,j,k] = num;
+                        }
+                    }
+                }
+            }
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    for (int k=0; k<l; k++)
+                    {
+                        Console.Write("{0},{1},{2} -> {3}| \t",i+1,j+1,k+1,arr5[i,j,k]);
+                    }
+                }
+                Console.WriteLine("==========================================================");
+            }
+            Console.WriteLine("Вывод по задаче 3 закончен");
+            //Задача 4
+            //Показать треугольник Паскаля
+            Console.WriteLine("Задача 4");
+            Console.WriteLine("Показать треугольник Паскаля");
+            Console.WriteLine("Введите размер треугольника");
+            m = Convert.ToInt32(Console.ReadLine());
+            int[,] arr6 = new int[m,m];
+            Console.WriteLine("Заполнение треугольника Паскаля:");
+            for (int i = 0; i<m; i++)
+            {
+                for (int j = 0; j<m; j++)
+                {
+                    if (i==0 || j==0)
+                        arr6[i,j]=1;
+                    else
+                        arr6[i,j]= arr6[i,j-1]+arr6[i-1,j];
+                }
+            }
+            Console.WriteLine("Вывод треугольника Паскаля:");
+            for (int i = 0; i<m; i++)
+            {
+                for (int j = 0; j<(m-i)/2; j++)
+                    Console.Write("\t");
+                for (int j = 0; j<=i; j++)
+                {
+                    Console.Write("{0} \t",arr6[i-j,j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("Вывод по задаче 4 закончен");
+        }
+    }
+}
