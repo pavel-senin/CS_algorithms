@@ -1,0 +1,95 @@
+using System;
+using System.Collections;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        
+        public static void Main(string[] args)
+        {
+            
+
+            //Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.
+            Console.WriteLine("Задача 1");
+            Console.WriteLine("Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.");
+            Console.WriteLine("Введите число строк");
+            int m = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите число столбцов");
+            int n = Convert.ToInt32(Console.ReadLine());
+            double[,] arr = new double[m,n];
+            Console.WriteLine("Сначала заполняем случайными вещественными числами от 0 до 1000");
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    Random rand = new Random();
+                    arr[i,j]=Math.Round(rand.NextDouble()*1000,2);
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            //Реализация сортировки
+            for (int i=0; i<m; i++)
+            {
+                double[] tmp = new double[n];
+                for (int j=0; j<n; j++)
+                {
+                    tmp[j] = arr[i,j];
+                }
+                Array.Sort(tmp);
+                for (int j=0; j<n; j++)
+                {
+                    arr[i,j] = tmp[n-j-1];
+                }
+            }
+            Console.WriteLine("После сортировки:");
+            for (int i=0; i<m; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("Вывод по задаче 1 закончен");
+            //Написать программу, которая в двумерном массиве заменяет строки на столбцы
+            //или сообщить, что это невозможно (в случае, если матрица не квадратная).
+            Console.WriteLine("Задача 2");
+            Console.WriteLine("Написать программу, которая в двумерном массиве заменяет строки.");
+            Console.WriteLine("на столбцы.");
+            double[,] arr2 = new double[n,m];
+            Console.WriteLine("Заменяем строки на столбцы:");
+            for (int i=0; i<n; i++)
+            {
+                for (int j=0; j<m; j++)
+                {
+                    arr2[i,j]=arr[j,i];
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr2[i,j]);
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("Вывод по задаче 2 закончен.");
+            //В матрице найти строку с наименьшей суммой элементов.
+            Console.WriteLine("В матрице найти строку с наименьшей суммой элементов.");
+            Console.WriteLine("Будем считать суммы построчно из исходной матрицы (задача 1)");
+            double[] columnSums = new double[m];
+            for (int i=0; i<m; i++)
+            {
+                columnSums[i]=0;
+                for (int j=0; j<n; j++)
+                {
+                    columnSums[i]+=arr[i,j];
+                    Console.Write("{0},{1} -> {2}| \t",i+1,j+1,arr[i,j]);
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Сумма равна: {0}", columnSums[i]);
+            }
+            Array.Sort(columnSums);
+            Console.WriteLine("Минимальная сумма равна: {0}", columnSums[0]);
+            Console.WriteLine("Вывод по задаче 3 закончен.");
+        }
+    }
+}
