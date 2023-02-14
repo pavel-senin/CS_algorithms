@@ -1,0 +1,113 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int FibAB(int a,int b,int N)
+            {
+                if (N!=0)
+                {
+                    int tmp=a+b;
+                    Console.Write("{0}\t",tmp);
+                    a=b;
+                    b=tmp;
+                    FibAB(a,b,N-1);
+                    return 0;
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Вывод по задаче 5 закончен");
+                    return 0;
+                }
+            }
+            //Задача 1
+            //Показать натуральные числа от N до 1, N задано.
+            Console.WriteLine("Задача 1");
+            Console.WriteLine("Показать натуральные числа от N до 1, N задано.");
+            Console.WriteLine("Введите N:>");
+            int N = Convert.ToInt32(Console.ReadLine());
+            for (int i=N;i>=1;i--)
+            {
+                Console.Write("{0}\t",i);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Вывод по задаче 1 закончен");
+            //Задача 2
+            //Показать натуральные числа от M до N, N и M заданы
+            Console.WriteLine("Задача 2");
+            Console.WriteLine("Показать натуральные числа от M до N, N и M заданы.");
+            Console.WriteLine("Введите M:>");
+            int M = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите N:>");
+            N = Convert.ToInt32(Console.ReadLine());
+            if (M>N)
+            {
+                for (int i=N;i<=M;i++)
+                {
+                    Console.Write("{0}\t",i);
+                }
+            }
+            else
+            {
+                for (int i=M;i<=N;i++)
+                {
+                    Console.Write("{0}\t",i);
+                }
+            }
+            Console.WriteLine("Вывод по задаче 2 закончен");
+            //Задача 3
+            //Найти сумму элементов от M до N, N и M заданы
+            Console.WriteLine("Задача 3");
+            Console.WriteLine("Найти сумму элементов от M до N, N и M заданы");
+            Console.WriteLine("Введите M:>");
+            M = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите N:>");
+            N = Convert.ToInt32(Console.ReadLine());
+            int sum=0;
+            if (M>N)
+            {
+                for (int i=N;i<=M;i++)
+                {
+                    sum=sum+i;
+                }
+            }
+            else
+            {
+                for (int i=M;i<=N;i++)
+                {
+                    sum=sum+i;
+                }
+            }
+            Console.WriteLine("Сумма элементов равна {0}",sum);
+            Console.WriteLine("Вывод по задаче 3 закончен");
+            //Задача 5
+            //Написать программу показывающие первые N чисел, для которых каждое следующее равно
+            //сумме двух предыдущих. Первые два элемента последовательности задаются пользователем
+            Console.WriteLine("Задача 5");
+            Console.WriteLine("Написать программу показывающие первые N чисел, для которых каждое следующее равно");
+            Console.WriteLine("сумме двух предыдущих. Первые два элемента последовательности задаются пользователем.");
+            Console.WriteLine("Введите N:>");
+            N = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите первое число:>");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите второе число:>");
+            int b = Convert.ToInt32(Console.ReadLine());
+            if (b>a)
+            {
+                FibAB(a,b,N);
+            }
+            else
+            {
+                FibAB(b,a,N);
+            }
+            Console.WriteLine("==================================");
+        }
+    }
+}
