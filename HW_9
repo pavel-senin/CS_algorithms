@@ -9,6 +9,51 @@ namespace Rextester
     {
         public static void Main(string[] args)
         {
+            //рекурсия для 1 задачи
+            int NaturalsFromNtoOne(int N)
+            {
+                if (N==1)
+                {
+                    Console.Write("{0}\t",N);
+                    return 1;
+                }
+                else
+                {
+                    Console.Write("{0}\t",N);
+                    NaturalsFromNtoOne(N-1);
+                }
+                return 0;
+            }
+            //рекурсия для 2 задачи
+            int NaturalsFromMtoN(int M, int N)
+            {
+                if (M==N)
+                {
+                    Console.Write("{0}\t",M);
+                    return 0;
+                }
+                else
+                {
+                    Console.Write("{0}\t",M);
+                    NaturalsFromMtoN(M+1, N);
+                    return 0;
+                }
+            }
+            //рекурсия для 3 задачи
+            int SumFromMtoN(int M, int N, int SUM)
+            {
+                if (M==N)
+                {
+                    SUM=SUM+M;
+                }
+                else
+                {
+                    SUM=SUM+M;
+                    SUM=SumFromMtoN(M+1, N, SUM);
+                }
+                return SUM;
+            }
+            //рекурсия для 5 задачи
             int FibAB(int a,int b,int N)
             {
                 if (N!=0)
@@ -33,10 +78,7 @@ namespace Rextester
             Console.WriteLine("Показать натуральные числа от N до 1, N задано.");
             Console.WriteLine("Введите N:>");
             int N = Convert.ToInt32(Console.ReadLine());
-            for (int i=N;i>=1;i--)
-            {
-                Console.Write("{0}\t",i);
-            }
+            NaturalsFromNtoOne(N);
             Console.WriteLine("");
             Console.WriteLine("Вывод по задаче 1 закончен");
             //Задача 2
@@ -47,20 +89,15 @@ namespace Rextester
             int M = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите N:>");
             N = Convert.ToInt32(Console.ReadLine());
-            if (M>N)
+            if (M<N)
             {
-                for (int i=N;i<=M;i++)
-                {
-                    Console.Write("{0}\t",i);
-                }
+                NaturalsFromMtoN(M, N);
             }
             else
             {
-                for (int i=M;i<=N;i++)
-                {
-                    Console.Write("{0}\t",i);
-                }
+                NaturalsFromMtoN(N, M);
             }
+            Console.WriteLine("");
             Console.WriteLine("Вывод по задаче 2 закончен");
             //Задача 3
             //Найти сумму элементов от M до N, N и M заданы
@@ -73,17 +110,11 @@ namespace Rextester
             int sum=0;
             if (M>N)
             {
-                for (int i=N;i<=M;i++)
-                {
-                    sum=sum+i;
-                }
+                sum=SumFromMtoN(N, M, sum);
             }
             else
             {
-                for (int i=M;i<=N;i++)
-                {
-                    sum=sum+i;
-                }
+                sum=SumFromMtoN(M, N, sum);
             }
             Console.WriteLine("Сумма элементов равна {0}",sum);
             Console.WriteLine("Вывод по задаче 3 закончен");
